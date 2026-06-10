@@ -1,0 +1,155 @@
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700&f[]=satoshi@700,500,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-main: #fcfcfc;
+    --bg-card: #ffffff;
+    --bg-tertiary: #f8fafc;
+    --accent: #7C3AED;
+    --accent-hover: #8B5CF6;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --text-disabled: #94a3b8;
+    --border-main: #e2e8f0;
+    --nav-bg: rgba(255, 255, 255, 0.8);
+    --nav-border: rgba(226, 232, 240, 0.5);
+    --floating-bg: #ffffff;
+    --floating-accent: #7c3aed;
+    --tag-bg: #f5f3ff;
+    --tag-text: #7C3AED;
+    --selection-bg: rgba(124, 58, 237, 0.2);
+  }
+
+  html.dark {
+    --bg-main: #020617;
+    --bg-card: #0f172a;
+    --bg-tertiary: #1e293b;
+    --accent: #a78bfa;
+    --accent-hover: #c4b5fd;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --text-disabled: #64748b;
+    --border-main: #1e293b;
+    --nav-bg: rgba(2, 6, 23, 0.8);
+    --nav-border: rgba(30, 41, 59, 0.5);
+    --floating-bg: rgba(255,255,255,0.04);
+    --floating-accent: #a78bfa;
+    --tag-bg: #1e1b4b;
+    --tag-text: #c4b5fd;
+    --selection-bg: rgba(124, 58, 237, 0.3);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    @apply font-sans antialiased overflow-x-hidden leading-relaxed transition-colors duration-300;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-main);
+    @apply font-display font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-8 md:py-10;
+  }
+
+  .btn-primary {
+    background-color: var(--accent);
+    color: #ffffff;
+    @apply px-8 py-3 rounded-full transition-all duration-300 font-bold flex items-center justify-center gap-2 shadow-lg shadow-violet-500/20 active:scale-95;
+  }
+  .btn-primary:hover {
+    background-color: var(--accent-hover);
+    @apply -translate-y-0.5 shadow-violet-500/40;
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--border-main);
+    color: var(--text-main);
+    @apply px-8 py-3 rounded-full transition-all duration-300 font-bold flex items-center justify-center gap-2 active:scale-95;
+  }
+  .btn-outline:hover {
+    background-color: var(--bg-tertiary);
+    @apply -translate-y-0.5;
+  }
+
+  .card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-main);
+    @apply rounded-3xl p-8 lg:p-10 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)];
+  }
+  .card:hover {
+    @apply shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] -translate-y-1;
+  }
+
+  .grain-overlay {
+    @apply fixed inset-0 pointer-events-none opacity-[0.02] z-[9999];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* Glow and shimmer utilities */
+  .text-glow {
+    text-shadow: 0 8px 32px rgba(124,58,237,0.16), 0 2px 8px rgba(124,58,237,0.08);
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 4s linear infinite;
+  }
+
+  /* Parallax helper (small translate on scroll via JS) */
+  .parallax-y {
+    transform: translate3d(0,0,0);
+    will-change: transform;
+  }
+
+  /* Floating island / nav wave styles */
+  .floating-island {
+    background-color: rgba(255,255,255,0.6);
+    border: 1px solid var(--nav-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(124,58,237,0.08);
+  }
+
+  html.dark .floating-island {
+    background-color: rgba(2,6,23,0.55);
+    border: 1px solid rgba(255,255,255,0.04);
+    box-shadow: 0 10px 30px rgba(124,58,237,0.06);
+  }
+
+  .nav-wave {
+    width: 520px;
+    height: 72px;
+    opacity: 0.95;
+    filter: drop-shadow(0 8px 24px rgba(2,6,23,0.08));
+  }
+
+  @keyframes wave-move {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(6px); }
+    100% { transform: translateX(0); }
+  }
+
+  .wave-anim { animation: wave-move 6s ease-in-out infinite; }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-indigo-600 font-extrabold;
+  }
+}
