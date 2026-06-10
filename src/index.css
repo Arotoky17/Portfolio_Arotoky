@@ -126,6 +126,12 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 10px 30px rgba(124,58,237,0.08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 
   html.dark .floating-island {
@@ -135,11 +141,17 @@
   }
 
   .nav-wave {
-    width: 520px;
+    width: min(90vw, 520px);
     height: 72px;
     opacity: 0.95;
     filter: drop-shadow(0 8px 24px rgba(2,6,23,0.08));
+    max-width: 520px;
+    transition: width 240ms ease;
   }
+
+  /* Utility: hide scrollbar for overflowed nav */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
   @keyframes wave-move {
     0% { transform: translateX(0); }

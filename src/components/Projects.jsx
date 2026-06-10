@@ -35,7 +35,7 @@ const Projects = () => {
             >
               <motion.div
                 whileHover={{ y: -8 }}
-                className="group relative flex flex-col h-full min-h-[350px] bg-ninja-card border border-ninja-border rounded-[2.5rem] overflow-hidden shadow-premium transition-all duration-500"
+                className="group relative flex flex-col h-full min-h-[250px] md:min-h-[350px] bg-ninja-card border border-ninja-border rounded-[2.5rem] overflow-hidden shadow-premium transition-all duration-500"
               >
                 <div className="absolute inset-0 z-0">
                   <img
@@ -46,7 +46,7 @@ const Projects = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
                 </div>
 
-                <div className="relative z-10 p-8 lg:p-10 mt-auto flex flex-col h-full justify-end">
+                  <div className="relative z-10 p-6 md:p-8 lg:p-10 mt-auto flex flex-col h-full justify-end">
                   <div className="flex flex-wrap items-center gap-2 mb-4">
                     <span className="px-3 py-1 rounded-full bg-violet-500/90 text-white text-[10px] font-bold uppercase tracking-wider backdrop-blur-sm">
                       {project.category}
@@ -79,7 +79,7 @@ const Projects = () => {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-black text-sm font-bold transition-all hover:bg-violet-600 hover:text-white"
+                        className="flex items-center gap-2 px-4 sm:px-6 py-2 rounded-full bg-white text-black text-sm font-bold transition-all hover:bg-violet-600 hover:text-white"
                       >
                         <ExternalLink size={16} />
                         Visiter

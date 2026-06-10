@@ -109,7 +109,7 @@ const Hero = () => {
           <div className="lg:col-span-6 xl:col-span-5">
             <SectionReveal direction="left">
               {/* Name */}
-              <h1 className="text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[3.5rem] font-display font-extrabold text-ninja-text leading-[1.1] tracking-tighter mb-6 whitespace-nowrap" style={{ fontFamily: '"Outfit", "Inter", sans-serif' }}>
+              <h1 className="font-display font-extrabold text-ninja-text leading-[1.1] tracking-tighter mb-6" style={{ fontFamily: '"Outfit", "Inter", sans-serif', fontSize: 'clamp(2rem, 8vw, 3.5rem)' }}>
                 <span className="block opacity-70 pb-2">{PERSONAL_INFO.firstName}</span>
                 <span className="text-gradient animate-shimmer bg-[length:200%_auto] block text-glow pb-2">{PERSONAL_INFO.name}</span>
               </h1>
@@ -118,7 +118,7 @@ const Hero = () => {
 
               {/* Typewriter role */}
               <div className="h-10 mb-10 flex items-center">
-                <p className="text-xl md:text-2xl text-ninja-muted font-medium font-mono tracking-tight" style={{ fontFamily: '"DM Mono", monospace' }}>
+                <p className="text-lg sm:text-xl md:text-2xl text-ninja-muted font-medium font-mono tracking-tight" style={{ fontFamily: '"DM Mono", monospace' }}>
                   <span className="text-violet-500 mr-3 opacity-50">$</span>
                   {role}
                   <motion.span
@@ -132,15 +132,15 @@ const Hero = () => {
               </div>
 
               {/* Description */}
-              <p className="text-xl text-ninja-muted mb-12 max-w-lg leading-relaxed font-medium">
+              <p className="text-lg sm:text-xl text-ninja-muted mb-12 max-w-lg leading-relaxed font-medium">
                 Développeur Web & Mobile passionné, je crée des applications modernes, performantes et intuitives, du frontend au backend.
               </p>
 
               {/* Stats */}
-              <div className="flex items-stretch gap-0 mb-12 w-fit border border-ninja-border rounded-[2rem] overflow-hidden shadow-premium bg-ninja-card/20 backdrop-blur-sm">
+              <div className="flex flex-col sm:flex-row items-stretch gap-0 mb-12 w-full sm:w-fit border border-ninja-border rounded-[2rem] overflow-hidden shadow-premium bg-ninja-card/20 backdrop-blur-sm">
                 {STATS.map((stat, idx) => (
-                  <div key={stat.label} className={`flex flex-col items-center justify-center px-10 py-6 ${idx !== STATS.length - 1 ? 'border-r border-ninja-border' : ''}`}>
-                    <p className="text-4xl font-display font-extrabold text-violet-500 leading-none">
+                  <div key={stat.label} className={`flex flex-col items-center justify-center px-6 sm:px-10 py-6 ${idx !== STATS.length - 1 ? 'border-b sm:border-b-0 sm:border-r border-ninja-border' : ''}`}>
+                    <p className="text-3xl sm:text-4xl font-display font-extrabold text-violet-500 leading-none">
                       <span>{stat.value}{stat.suffix}</span>
                     </p>
                     <p className="text-[10px] text-ninja-muted uppercase tracking-[0.25em] font-bold mt-3 whitespace-nowrap">
@@ -151,18 +151,18 @@ const Hero = () => {
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-6">
+              <div className="flex flex-wrap gap-4">
                 <Magnetic>
                   <Link to="projects" smooth={true} offset={-80}>
-                    <button className="btn-primary group h-16 px-12 text-lg">
+                    <button className="btn-primary group h-14 sm:h-16 px-8 sm:px-12 text-base sm:text-lg">
                       Voir mes projets
-                      <ArrowRight size={22} className="ml-2 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight size={20} className="ml-2 transition-transform group-hover:translate-x-1" />
                     </button>
                   </Link>
                 </Magnetic>
                 <Magnetic>
                   <Link to="contact" smooth={true} offset={-80}>
-                    <button className="btn-outline h-16 px-12 text-lg">
+                    <button className="btn-outline h-14 sm:h-16 px-8 sm:px-12 text-base sm:text-lg">
                       Me contacter
                     </button>
                   </Link>
